@@ -115,7 +115,7 @@ class IIC:
         lr_scheduler = LearningRateScheduler(lr_schedule,
                                              verbose=1)
         callbacks = [accuracy, lr_scheduler]
-        self._model.fit(x=self.train_gen,
+        self._model.fit_generator(x=self.train_gen,
                         use_multiprocessing=False,
                         epochs=self.args.epochs,
                         callbacks=callbacks,
