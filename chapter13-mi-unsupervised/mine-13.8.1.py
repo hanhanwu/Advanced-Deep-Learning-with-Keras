@@ -226,7 +226,7 @@ class LinearClassifier:
         inputs = Input(shape=(latent_dim,), name="cluster")
         x = Dense(256)(inputs)
         outputs = Dense(n_classes,
-                        activation='softmax',
+                        activation='linear',
                         name="class")(x)
         name = "classifier"
         self._model = Model(inputs, outputs, name=name)
@@ -314,7 +314,7 @@ class MINE:
         x = self.backbone(inputs)
         x = Flatten()(x)
         y = Dense(self.latent_dim,
-                  activation='linear',
+                  activation='softmax',
                   name="encoded_x")(x)
         # encoder is based on backbone (eg VGG)
         # feature extractor
